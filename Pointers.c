@@ -12,6 +12,7 @@ int main()
     printf("The address of a is -> %p\n", &a);
     printf("The address of a is -> %p\n", pt);
     printf("The address of pointer to a is -> %p\n", &pt);
+
     return 0;
 }
   

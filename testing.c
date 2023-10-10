@@ -1,49 +1,33 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-#include "queue.h"
 
-bool notpossiblepath(char** matrix, int n){
-  for(int i = n-1;i>=0;i--)
-  {
-    if(matrix[n-1][i]=='#')
-    {
-        int k = i;
-        int j = n-1;
-        while( k<n && matrix[j][k]=='#' )
-        {
-            j--;k++;
-        }
-        if(k==n)
-        {
-            return true;
-        }
-  }
-  return false;
-}
-int reach_mess(int n, char** matrix)
+int main()
 {
-    if(notpossiblepath(matrix,n))return -1;
-    return (n-1)*2;
-}
-int main(void) 
-{
-    int n;
-    scanf("%d", &n);
+    int N, i, j, max, count;
+    scanf("%d", &N);
 
-    char *matrix = malloc(n*sizeof(char));
-
-    for(int i=0; i<1000; i++)
+    int a[N];
+    for (i = 0; i < N; i++)
     {
-        matrix[i] = malloc(n*sizeof(char));
+        scanf("%d", &a[i]);
     }
 
-    for(int i=0; i<n; i++)
+    printf("%d", 0);
+    for (i = 1; i < N; i++)
     {
-        scanf("%s", matrix[i]);  
+        count = 0;
+        max = a[i];
+        for (j = i - 1; j >= 0; j--)
+        {
+            if (a[j] < max)
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        printf(" %d", count);
     }
-
-    printf("%d", reach_mess(n,matrix));
-  
     return 0;
 }
